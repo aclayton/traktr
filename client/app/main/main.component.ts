@@ -15,10 +15,9 @@ export class MainController {
   }
 
   $onInit() {
-    this.$http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-      console.log(response);
-    });
+    this.$http.get('/api/things')
+      .then(response => { console.log('response: ', response); })
+      .catch(error => { console.log('error: ', error); });
   }
 
   addThing() {
