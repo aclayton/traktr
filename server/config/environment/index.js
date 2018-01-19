@@ -54,7 +54,8 @@ var all = {
   trakt: {
     clientID: process.env.TRAKT_ID || 'id',
     clientSecret: process.env.TRAKT_SECRET || 'secret',
-    callbackURL: `${process.env.DOMAIN || ''}/auth/trakt/callback`
+    // callbackURL: `${process.env.DOMAIN || ''}/auth/trakt/callback`,
+    callbackURL: `https://haulingdust.com/auth/trakt/callback`
   }
 };
 
