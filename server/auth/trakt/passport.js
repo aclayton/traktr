@@ -8,12 +8,8 @@ export function setup(User, config) {
     callbackURL: config.trakt.callbackURL
   },
   function(accessToken, refreshToken, params, profile, done) {
-    console.log('accessToken', accessToken);
-    console.log('refreshToken', refreshToken);
-    console.log('params', params);
-    console.log('profile', profile);
-    console.log('done', done);
 
+    console.log('profile: ', profile);
 
     User.findOne({'trakt.id': profile.id}).exec()
       .then(user => {
@@ -23,7 +19,6 @@ export function setup(User, config) {
 
         user = new User({
           name: profile._json.username,
-          // email: profile.emails[0].value,
           role: 'user',
           username: profile._json.username,
           provider: 'trakt',

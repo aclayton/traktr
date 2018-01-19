@@ -41,6 +41,7 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-trakt": "^1.0.4",
+    "request-promise": "^4.2.2",
     "serve-favicon": "^2.3.0",
     "sprint-js": "~0.1.0"
   },

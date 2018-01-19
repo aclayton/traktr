@@ -12,6 +12,7 @@
 
 import jsonpatch from 'fast-json-patch';
 import Thing from './thing.model';
+const rp = require('request-promise');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -62,6 +63,21 @@ function handleError(res, statusCode) {
   return function(err) {
     res.status(statusCode).send(err);
   };
+}
+
+export function traktTest(req, res) {
+
+  var options = {
+    uri: 'https://api.trakt.tv/users/lists',
+    format: 'json',
+    auth: {
+      bearer: req.user.accessToken
+    }
+  };
+
+  return rp(options)
+    .then(respondWithResult(res))
+    .catch(handleError(res));
 }
 
 // Gets a list of Things
