@@ -15,19 +15,19 @@ export function setup(User, config) {
     console.log('done', done);
 
 
-    User.findOne({'google.id': profile.id}).exec()
+    User.findOne({'trakt.id': profile.id}).exec()
       .then(user => {
         if(user) {
           return done(null, user);
         }
 
         user = new User({
-          name: profile.displayName,
-          email: profile.emails[0].value,
+          name: profile._json.username,
+          // email: profile.emails[0].value,
           role: 'user',
-          username: profile.emails[0].value.split('@')[0],
-          provider: 'google',
-          google: profile._json
+          username: profile._json.username,
+          provider: 'trakt',
+          trakt: profile._json
         });
 
         user.save()
