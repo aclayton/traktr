@@ -67,6 +67,8 @@ function handleError(res, statusCode) {
 
 export function traktTest(req, res) {
 
+  console.log('request: ', req);
+
   var options = {
     uri: 'https://api.trakt.tv/users/lists',
     format: 'json',
